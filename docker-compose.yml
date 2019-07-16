@@ -1,0 +1,124 @@
+version: "3"
+
+services:
+  redis-c1:
+    image: 
+      redis
+    container_name:
+      redis-cluster-1
+    restart: always
+    networks: 
+      redis_cluster_net:
+        ipv4_address: 202.112.14.11
+    ports:
+      - 7001:7001
+      - 17001:17001
+      - 27001:27001
+    volumes:
+      - ./7001/redis.conf:/usr/local/etc/redis.conf
+      - ./7001/data/:/data/
+    command:
+      redis-server /usr/local/etc/redis.conf
+
+  redis-c2:
+    image: 
+      redis
+    container_name:
+      redis-cluster-2
+    restart: always
+    networks: 
+      redis_cluster_net:
+        ipv4_address: 202.112.14.12
+    ports:
+      - 7002:7002
+      - 17002:17002
+      - 27002:27002
+    volumes:
+      - ./7002/redis.conf:/usr/local/etc/redis.conf
+      - ./7002/data/:/data/
+    command:
+      redis-server /usr/local/etc/redis.conf
+
+  redis-c3:
+    image: 
+      redis
+    container_name:
+      redis-cluster-3
+    restart: always
+    networks: 
+      redis_cluster_net:
+        ipv4_address: 202.112.14.13
+    ports:
+      - 7003:7003
+      - 17003:17003
+      - 27003:27003
+    volumes:
+      - ./7003/redis.conf:/usr/local/etc/redis.conf
+      - ./7003/data/:/data/
+    command:
+      redis-server /usr/local/etc/redis.conf
+
+  redis-c4:
+    image: 
+      redis
+    container_name:
+      redis-cluster-4
+    restart: always
+    networks: 
+      redis_cluster_net:
+        ipv4_address: 202.112.14.14
+    ports:
+      - 7004:7004
+      - 17004:17004
+      - 27004:27004
+    volumes:
+      - ./7004/redis.conf:/usr/local/etc/redis.conf
+      - ./7004/data/:/data/
+    command:
+      redis-server /usr/local/etc/redis.conf
+
+  redis-c5:
+    image: 
+      redis
+    container_name:
+      redis-cluster-5
+    restart: always
+    networks: 
+      redis_cluster_net:
+        ipv4_address: 202.112.14.15
+    ports:
+      - 7005:7005
+      - 17005:17005
+      - 27005:27005
+    volumes:
+      - ./7005/redis.conf:/usr/local/etc/redis.conf
+      - ./7005/data/:/data/
+    command:
+      redis-server /usr/local/etc/redis.conf
+
+  redis-c6:
+    image: 
+      redis
+    container_name:
+      redis-cluster-6
+    restart: always
+    networks: 
+      redis_cluster_net:
+        ipv4_address: 202.112.14.16
+    ports:
+      - 7006:7006
+      - 17006:17006
+      - 27006:27006
+    volumes:
+      - ./7006/redis.conf:/usr/local/etc/redis.conf
+      - ./7006/data/:/data/
+    command:
+      redis-server /usr/local/etc/redis.conf
+
+
+networks: 
+  redis_cluster_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 202.112.14.0/24
